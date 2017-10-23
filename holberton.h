@@ -1,6 +1,11 @@
 #ifndef _HOLBERTON_H_
 #define _HOLBERTON_H_
 
+#include <unistd.h>
+#include <stdarg.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <limits.h>
 
 /**
  * struct convert - the structure used to convert types for printing
@@ -15,5 +20,9 @@ typedef struct convert
 } convert_t;
 
 int _printf(const char *format, ...);
+int *p_nchar(char c, int *sum);
+int *p_percent(int *sum);
+int *p_str(va_list ap, int *sum);
+int *p_char(va_list ap, int *sum);
 
 #endif /* _HOLBERTON_H_ */
