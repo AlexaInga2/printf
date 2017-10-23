@@ -5,7 +5,7 @@
  *
  * Return: sum of intergers printed (chars & digits)
  */
-int print_int(va_list i)
+int *print_int(va_list i, int *sum)
 {
 	int a[10];
 	int max, num, sum, count, index;
@@ -32,11 +32,11 @@ int print_int(va_list i)
 	}
 	for (index = 0, sum = 0; index < 10; index++)
 		sum = sum + a[index];
-	if (sum != 0 || index == 9)
-	{
-		_putchar('0' + a[index]);
-		count++;
-	}
+		if (sum != 0 || index <= 9)
+		{
+			_putchar('0' + a[index]);
+			count++;
+		}
 	return (count);
 }
 
@@ -46,7 +46,7 @@ int print_int(va_list i)
  *
  * Return: the sum of printed dec
  */
-int print_dec(va_list d)
+int *print_dec(va_list d, int *sum)
 {
 	int a[10];
 	int max, num, sum, count, index;

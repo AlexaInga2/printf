@@ -10,6 +10,8 @@ int _printf(const char *format, ...)
 	convert_t func[] = {
 		{"c", p_char},
 		{"s", p_str},
+		{"i", print_int},
+		{"d", print_dec}, 
 		{NULL, NULL}
 	};
 	int i, index, printed;
