@@ -1,4 +1,7 @@
 #include "holberton.h"
+#include <stdarg.h>
+#include <stdlib.h>
+#include <stdio.h>
 /**
  * print_int - print an integer
  * @i: interger to print
@@ -8,7 +11,7 @@
 int print_int(va_list i)
 {
 	int a[10];
-	int max, num, sum, count, index;
+	int max, num, total, count, index;
 
 /* translate i to actual arg value */
 	num = va_arg(i, int);
@@ -30,12 +33,15 @@ int print_int(va_list i)
 		for (index = 0; index < 10; index++)
 			a[index] = a[index] * -1;
 	}
-	for (index = 0, sum = 0; index < 10; index++)
-		sum = sum + a[index];
-	if (sum != 0 || index == 9)
+	for (index = 0, total = 0; index < 10; index++)
 	{
-		_putchar('0' + a[index]);
-		count++;
+		total = total + a[index];
+
+		if (total != 0 || index == 9)
+		{
+			_putchar('0' + a[index]);
+			count++;
+		}
 	}
 	return (count);
 }
@@ -49,7 +55,7 @@ int print_int(va_list i)
 int print_dec(va_list d)
 {
 	int a[10];
-	int max, num, sum, count, index;
+	int max, num, total, count, index;
 
 	num = va_arg(d, int);
 	count = 0;
@@ -67,10 +73,10 @@ int print_dec(va_list d)
 		for (index = 0; index < 10; index++)
 			a[index] = a[index] * -1;
 	}
-	for (index = 0, sum = 0; index < 10; index++)
+	for (index = 0, total = 0; index < 10; index++)
 	{
-		sum = sum + a[index];
-		if (sum != 0 || index == 9)
+		total = total + a[index];
+		if (total != 0 || index == 9)
 		{
 			_putchar('0' + a[index]);
 			count++;
