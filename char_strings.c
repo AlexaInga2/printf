@@ -31,7 +31,7 @@ int *p_percent(int *sum)
  */
 int *p_char(va_list ap, int *sum)
 {
-	char c = va_arg(ap, int);
+	char c = (char)va_arg(ap, int);
 
 	write(1, &c, sizeof(char));
 	*sum += 1;
@@ -47,7 +47,7 @@ int *p_char(va_list ap, int *sum)
 int *p_str(va_list ap, int *sum)
 {
 	int i;
-	char *s = va_arg(ap, int);
+	char *s = va_arg(ap, char *);
 	char *n = "(nil)";
 
 	if (s == NULL)
