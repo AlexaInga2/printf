@@ -31,7 +31,7 @@ int *p_percent(int *sum)
  */
 int *p_char(va_list ap, int *sum)
 {
-	char c = va_arg(ap, int);
+	char c = (char)va_arg(ap, int);
 
 	write(1, &c, sizeof(char));
 	*sum += 1;
