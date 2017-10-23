@@ -24,5 +24,7 @@ int *p_nchar(char c, int *sum);
 int *p_percent(int *sum);
 int *p_str(va_list ap, int *sum);
 int *p_char(va_list ap, int *sum);
-
+int _putchar(char c);
+int print_int(va_list i);
+int print_dec(va_list d);
 #endif /* _HOLBERTON_H_ */
