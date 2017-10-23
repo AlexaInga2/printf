@@ -20,9 +20,7 @@ int _printf(const char *format, ...)
 	if (sum == NULL)
 		return (0);
 	*sum = 0;
-	
 	va_start(ap, format);
-
 	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
@@ -46,6 +44,5 @@ int _printf(const char *format, ...)
 	}
 	printed = *sum;
 	free(sum);
-	va_end(ap);
 	return (printed);
 }

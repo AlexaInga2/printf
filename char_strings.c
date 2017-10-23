@@ -47,7 +47,7 @@ int *p_char(va_list ap, int *sum)
 int *p_str(va_list ap, int *sum)
 {
 	int i;
-	char *s = va_arg(ap, int);
+	char *s = va_arg(ap, char *);
 	char *n = "(nil)";
 
 	if (s == NULL)
