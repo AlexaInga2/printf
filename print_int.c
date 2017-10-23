@@ -43,7 +43,7 @@ int print_int(va_list i)
 			count++;
 		}
 	}
-	return (count);
+	return (sum);
 }
 
 /**
@@ -82,5 +82,5 @@ int print_dec(va_list d)
 			count++;
 		}
 	}
-	return (count);
+	return (sum);
 }
