@@ -14,7 +14,7 @@ int print_int(va_list i)
 	num = va_arg(i, int);
 	count = 0;
 	max = 1000000000; /* int is in base 10 */
-	a[0] = num/max;
+	a[0] = num / max;
 
 	for (index = 1; index < 10; index++)
 	{
@@ -32,7 +32,7 @@ int print_int(va_list i)
 	}
 	for (index = 0, sum = 0; index < 10; index++)
 		sum = sum + a[index];
-	if (sum != 0 || index = 9)
+	if (sum != 0 || index == 9)
 	{
 		_putchar('0' + a[index]);
 		count++;
@@ -44,7 +44,7 @@ int print_int(va_list i)
  * print_dec - print decimal
  * @d: decimal to print
  *
- * Return:
+ * Return: the sum of printed dec
  */
 int print_dec(va_list d)
 {
@@ -70,7 +70,7 @@ int print_dec(va_list d)
 	for (index = 0, sum = 0; index < 10; index++)
 	{
 		sum = sum + a[index];
-		if (sum != 0 || index ==9)
+		if (sum != 0 || index == 9)
 		{
 			_putchar('0' + a[index]);
 			count++;
