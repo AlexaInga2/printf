@@ -1,0 +1,85 @@
+.\" Manpage for printf.
+.\" Contact 215@holbertonschool.com to correct errors or typos.
+.TH _printf 3 "23 October 2017" "1.0" "Printf Program Manual"
+.SH NAME
+ _printf- the output function printf translates internal values to characters.
+.SH SYNOPSIS
+.BI printf (FORMAT, ARGUMENT)...
+.PP
+.B #include 'holberton.h'
+.PP
+.B #include <unistd.h>
+.PP
+.B #include <stdlib.h>
+.PP
+.B #include <stdarg.h>
+.PP
+.B #include <stdio.h>
+.PP
+.B int _printf(const char *format, ...);
+.PP
+.B int *p_nchar(char c, int *sum);
+.PP
+.B
+.PP
+.B int *p_percent(int *sum);
+.PP
+.B int *p_str(va_list ap, int *sum);
+.PP
+.B int *p_char(va_list ap, int *sum);
+.PP
+.B int _putchar(char c);
+.PP
+.B int print_int(va_list i);
+.PP
+.B int print_dec(va_list d);
+.SH DESCRIPTION
+The output funtction printf translates internal values to characters. Printf converts, formats, and prints its arguments on the standard output under control of the format.
+.SH RETURN VALUE
+Returns the total  number of characters printed, excluding the NULL byte used to end output to strings
+.SH Format String Format
+The format string is a character string and contains two types of obects: ordinary characters which are coppied to the output stream and conversion specifiers, each of which causes conversion and printing of the next successive argument.
+Every format specifier starts with a percent sign (%) and ends with a letter. The letters are chosen to have a certain mnemonic meaning.
+.PP
+.B Example:
+% [flag] [min width] [precision] [length modifier] [conversion specifier]
+.SH Conversion Specifiers
+A character that specifies the type of conversion to be applied, along with printing the next successive argument to printf.
+.TP
+.B -c
+.R print (unsigned) character's of a string. Conversion state starting in the initialized state, and the resulting multibye string is written.
+.TP
+.B -s
+.R const char* argument is a pointer to an array of character types which is a pointer to a string. Characters from the array are executed until terminated by null byte ('\0') Corresponds to a pointer to character argument
+.TP
+.B -d, i
+.R int argument is converted to a signed decimal notation
+.TP
+.B o
+.R int; unsigned octal number without a leading zero
+.TP
+.B x, X
+.R int; unsigned hexadecimal number without a leading 0x or 0X, using abcdef or ABCDEF for 10
+.TP
+.B u
+.R int; unsigned decimal number
+.TP
+.B c
+.R int; single character
+.TP
+.B f
+.R double; [-]m.dddd, where the number od d's is given by the precision
+.TP
+.B p
+.R void *; pointer (implementation-dependent representation)
+.TP
+.B -%, %%
+.R returns a character or returns the actual sign if there is another % in front (no argument is converted)
+.SH SEE ALSO
+.R printf(3) printf
+.SH BUGS
+.R printf uses its first argument to decide how many arguments follow and what their types aee. It will get confused, and you will get wrong ansers, if there are no enough arguments ot if they are the wrong type. You should be aware of the difference between the two calls:
+.R printf(s); /* fails if s contains % */
+.R printf("s", s); /* safe */
+.SH AUTHOR
+Alexa Inga and Kiren Jacob Biehler (215@holbertonschool.com)
