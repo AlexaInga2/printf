@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 		{"c", p_char},
 		{"s", p_str},
 		{"i", print_int},
-		{"d", print_dec}, 
+		{"d", print_dec},
 		{NULL, NULL}
 	};
 	int i, index, printed;
@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		return (0);
 	*sum = 0;
 	va_start(ap, format);
-	for (i = 0; format [i]; i++)
+	for (i = 0; format[i]; i++)
 	{
 		if (format[i] == '%')
 		{

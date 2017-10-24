@@ -8,7 +8,7 @@
  */
 int *p_nchar(char c, int *sum)
 {
-	write(1, &c, sizeof(char));
+	_putchar(c);
 	*sum += 1;
 	return (sum);
 }
@@ -33,7 +33,7 @@ int *p_char(va_list ap, int *sum)
 {
 	char c = (char)va_arg(ap, int);
 
-	write(1, &c, sizeof(char));
+	_putchar(c);
 	*sum += 1;
 	return (sum);
 }
@@ -54,7 +54,7 @@ int *p_str(va_list ap, int *sum)
 	{
 		for (i = 0; n[i]; i++)
 		{
-			write(1, &n[i], sizeof(char));
+			_putchar(n[i]);
 			*sum += 1;
 		}
 	}
@@ -62,7 +62,7 @@ int *p_str(va_list ap, int *sum)
 	{
 		for (i = 0; s[i]; i++)
 		{
-			write(1, &s[i], sizeof(char));
+			_putchar(s[1]);
 			*sum += 1;
 		}
 	}
