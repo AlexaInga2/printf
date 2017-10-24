@@ -48,23 +48,13 @@ int *p_str(va_list ap, int *sum)
 {
 	int i;
 	char *s = va_arg(ap, char *);
-	char *n = "(null)";
 
 	if (s == NULL)
+		s = "(null)";
+	for (i = 0; s[i]; i++)
 	{
-		for (i = 0; n[i]; i++)
-		{
-			_putchar(n[i]);
-			*sum += 1;
-		}
-	}
-	else
-	{
-		for (i = 0; s[i]; i++)
-		{
-			_putchar(s[1]);
-			*sum += 1;
-		}
+		_putchar(s[i]);
+		*sum += 1;
 	}
 	return (sum);
 }
