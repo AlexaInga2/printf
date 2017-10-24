@@ -14,37 +14,36 @@ int _printf(const char *format, ...)
 		{"d", print_dec},
 		{NULL, NULL}
 	};
-	int i, index, printed;
+	int j, index, printed;
 	int *sum;
 	va_list ap;
 
+	if (format == NULL)
+		return (-1);
 	sum = malloc(sizeof(int));
 	if (sum == NULL)
 		return (0);
 	*sum = 0;
 	va_start(ap, format);
-	for (i = 0; format[i]; i++)
+	for (j = 0; format[j]; j++)
 	{
-		if (format[i] == '%')
+		if (format[j] == '%')
 		{
+			if (!format[j + 1])
+				return (-1);
 			for (index = 0; func[index].s != NULL; index++)
 			{
-				if (*(func[index].s) == format[i + 1])
-				{
-					sum = func[index].print(ap, sum);
-					i++;
-				}
+				if (*(func[index].s) == format[j + 1])
+					sum = func[index].print(ap, sum), j++;
 			}
-			if (format[i + 1] == '%')
-			{
-				sum = p_percent(sum);
-				i++;
-			}
+			if (format[j + 1] == '%')
+				sum = p_percent(sum), j++;
 		}
 		else
-			sum = p_nchar(format[i], sum);
+			sum = p_nchar(format[j], sum);
 	}
 	printed = *sum;
 	free(sum);
+	va_end(ap);
 	return (printed);
 }
