@@ -23,7 +23,7 @@ int _printf(const char *format, ...)
 		return (0);
 	*sum = 0;
 	va_start(ap, format);
-	for (i = 0; format[i]; i++)
+	for (i = 0; format [i]; i++)
 	{
 		if (format[i] == '%')
 		{
