@@ -51,7 +51,7 @@ int *p_str(va_list ap, int *sum)
 
 	if (s == NULL)
 		s = "(null)";
-	for (i = 0; s[i]; i++)
+	for (i = 0; s[i] != '\0' && s [i + 1] != '\0'; i++)
 	{
 		_putchar(s[i]);
 		*sum += 1;
