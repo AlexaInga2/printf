@@ -16,15 +16,16 @@
 typedef struct convert
 {
 	char *s;
-	int (*print)(va_list);
+	int *(*print)(va_list, int *);
 } convert_t;
 
 int _printf(const char *format, ...);
-int p_percent(va_list ap);
-int p_str(va_list ap);
-int p_char(va_list ap);
+int *p_percent(int *sum);
+int *p_str(va_list ap, int *sum);
+int *p_char(va_list ap, int *sum);
 int _putchar(char c);
-int print_int(va_list i);
-int print_dec(va_list d);
+int *print_int(va_list i, int *sum);
+int *print_dec(va_list d, int *sum);
+int *p_nchar(char c, int *sum);
 
 #endif /* _HOLBERTON_H_ */
