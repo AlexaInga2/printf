@@ -28,5 +28,6 @@ int *print_int(va_list i, int *sum);
 int *print_dec(va_list d, int *sum);
 int *p_nchar(char c, int *sum);
 int *conv_binary(va_list b, int *sum);
+int *get_func(const char *format, va_list ap, int i, int *sum);
 
 #endif /* _HOLBERTON_H_ */
