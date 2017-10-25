@@ -8,10 +8,10 @@
  * @sum: count of the chars printed
  * Return: sum of intergers printed (chars & digits)
  */
-int *print_int(va_list i, int *sum)
+int print_int(va_list i)
 {
 	int a[10];
-	int max, num, total, index;
+	int max, num, total = 0, index;
 
   /* translate i to actual arg value */
 	num = va_arg(i, int);
@@ -28,7 +28,7 @@ int *print_int(va_list i, int *sum)
 	if (num < 0)
 	{
 		_putchar('-');
-		*sum += 1;
+		total += 1;
 		for (index = 0; index < 10; index++)
 			a[index] = a[index] * -1;
 	}
@@ -39,10 +39,10 @@ int *print_int(va_list i, int *sum)
 		if (total != 0 || index == 9)
 		{
 			_putchar('0' + a[index]);
-			*sum += 1;
+			total += 1;
 		}
 	}
-	return (sum);
+	return (total);
 }
 
 /**
@@ -51,10 +51,10 @@ int *print_int(va_list i, int *sum)
  * @sum: count of chars printed
  * Return: the sum of printed dec
  */
-int *print_dec(va_list d, int *sum)
+int print_dec(va_list d)
 {
 	int a[10];
-	int max, num, total, index;
+	int max, num, total = 0, index;
 
 	num = va_arg(d, int);
 	max = 1000000000;
@@ -67,7 +67,7 @@ int *print_dec(va_list d, int *sum)
 	if (num < 0)
 	{
 		_putchar('-');
-		*sum += 1;
+		total += 1;
 		for (index = 0; index < 10; index++)
 			a[index] = a[index] * -1;
 	}
@@ -77,8 +77,8 @@ int *print_dec(va_list d, int *sum)
 		if (total != 0 || index == 9)
 		{
 			_putchar('0' + a[index]);
-			*sum += 1;
+			total += 1;
 		}
 	}
-	return (sum);
+	return (total);
 }

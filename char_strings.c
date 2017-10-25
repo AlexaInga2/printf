@@ -1,28 +1,15 @@
 #include "holberton.h"
 
 /**
- * p_nchar - prints a char
- * @c: char to be printed
- * @sum: sum of chars printed
- * Return: the number of characters to be printed
- */
-int *p_nchar(char c, int *sum)
-{
-	_putchar(c);
-	*sum += 1;
-	return (sum);
-}
-
-/**
  * p_percent - prints a % sign
- * @ap: list of args to be printed
  * @sum: sum of chars printed
  * Return: The current sum
  */
-int *p_percent(int *sum)
+int p_percent(va_list ap)
 {
-	return(p_nchar('%', sum));
-
+	(void) ap;
+	_putchar('%');
+	return(1);
 }
 
 /**
@@ -31,13 +18,12 @@ int *p_percent(int *sum)
  * @sum: the sum of chars printed
  * Return: Current sum of chars printed
  */
-int *p_char(va_list ap, int *sum)
+int p_char(va_list ap)
 {
 	char c = (char)va_arg(ap, int);
 
 	_putchar(c);
-	*sum += 1;
-	return (sum);
+	return (1);
 }
 
 /**
@@ -46,9 +32,9 @@ int *p_char(va_list ap, int *sum)
  * @sum: the sum of chars printed
  * Return: current sum of chars printed
  */
-int *p_str(va_list ap, int *sum)
+int p_str(va_list ap)
 {
-	int i;
+	int i, sum = 0;
 	char *s = va_arg(ap, char *);
 
 	if (s == NULL)
@@ -56,7 +42,7 @@ int *p_str(va_list ap, int *sum)
 	for (i = 0; s[i]; i++)
 	{
 		_putchar(s[i]);
-		*sum += 1;
+		sum++;
 	}
 	return (sum);
 }

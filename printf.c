@@ -7,46 +7,45 @@
  */
 int _printf(const char *format, ...)
 {
-  convert_t func[] = {
-    {"c", p_char},
-    {"s", p_str},
-    {"i", print_int},
-    {"d", print_dec},
-    {"b", conv_binary},
-    {NULL, NULL}
-  };
-  int j, index, printed;
-  int *sum = 0;
-  va_list ap;
+	convert_t func[] = {
+		{"c", p_char},
+		{"s", p_str},
+		{"i", print_int},
+		{"d", print_dec},
+		{"b", conv_binary},
+		{"%", p_percent},
+		{NULL, NULL}
+	};
+	int i = 0, index = 0, printed = 0;
+	va_list ap;
 
-  if (format == NULL)
-    return (-1);
-  sum = malloc(sizeof(int));
-  if (sum == NULL)
-    return (0);
-  va_start(ap, format);
-  for (j = 0; format[j]; j++)
-    {
-      if (format[j] == '%')
+	if (format == NULL)
+		return (-1);
+	va_start(ap, format);
+	while (format[i])
 	{
-	  if (!format[j + 1])
-	    return (-1);
-	  for (index = 0; func[index].s != NULL; index++)
-	    {
-	      if (format[j + 1] == *(func[index].s))
-		sum = func[index].print(ap, sum), j++;
-	    }
-	  if (format[j + 1] == '%')
-	    {
-	      sum = p_percent(sum);
-	      j++;
-	    }
+		if (format[i] == '%')
+		{
+			if (!format[i + 1])
+				return (-1);
+			while (func[index].s)
+			{
+				if (format[i + 1] == *(func[index].s))
+				{
+					printed += func[index].print(ap), i += 2;
+					break;
+				}
+				index++;
+			}
+			if (!func[index].s)
+			{
+				_putchar(format[i]), i++, printed++;
+				_putchar(format[i]), i++, printed++;
+			}
+		}
+		else
+			_putchar(format[i]), i++, printed++;
 	}
-      else
-	sum = p_nchar(format[j], sum);
-    }
-  printed = *sum;
-  free(sum);
-  va_end(ap);
-  return (printed);
+	va_end(ap);
+	return (printed);
 }

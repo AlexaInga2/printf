@@ -9,7 +9,7 @@
  *
  * Return: the number of bytes printed
  */
-int *conv_binary(va_list b, int *sum)
+int conv_binary(va_list b)
 {
 	unsigned int num, max, index, total;
 	unsigned int a[32];
@@ -23,15 +23,15 @@ int *conv_binary(va_list b, int *sum)
 		max = max / 2;
 		a[index] = (num / max) % 2;
 	}
-	for (index = 0, total = 0, sum = 0; index < 32; index++)
+	for (index = 0, total = 0; index < 32; index++)
 	{
 		total = total + a[index];
 		if (total || index == 31)
 		{
 			_putchar('0' + a[index]);
-			sum++;
+			total++;
 		}
 	}
-	return (sum);
+	return (total);
 }
 /* 32nd bit remains in our 4 byte/ 32 bit represents if # is + or _ */
