@@ -30,13 +30,16 @@ int _printf(const char *format, ...)
 		{
 			if (!format[j + 1])
 				return (-1);
-			for (index = 0; func[index].s; index++)
+			for (index = 0; func[index].s != NULL; index++)
 			{
 				if (format[j + 1] == *(func[index].s))
-					sum = func[index].print(ap, sum);
+					sum = func[index].print(ap, sum), j++;
 			}
 			if (format[j + 1] == '%')
+			{
 				sum = p_percent(sum);
+				j++;
+			}
 		}
 		else
 			sum = p_nchar(format[j], sum);
