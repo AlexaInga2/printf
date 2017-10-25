@@ -82,4 +82,4 @@ A character that specifies the type of conversion to be applied, along with prin
 .R printf(s); /* fails if s contains % */
 .R printf("s", s); /* safe */
 .SH AUTHOR
-Alexa Inga and Kiren Jacob Biehler (215@holbertonschool.com)
+Alexa Inga and Jacob Biehler (215@holbertonschool.com)
