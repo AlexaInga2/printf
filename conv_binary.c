@@ -13,6 +13,7 @@ int *conv_binary(va_list b, int *sum)
 {
 	unsigned int num, max, index, total;
 	unsigned int a[32];
+	int count;
 
 	num = va_arg(b, unsigned int);
 	max = 2147483648; /* 2 ^ 32-1 (binary is in base 2 and int value = 32 */
@@ -23,13 +24,13 @@ int *conv_binary(va_list b, int *sum)
 		max = max / 2;
 		a[index] = (num / max) % 2;
 	}
-	for (index = 0, total = 0, sum = 0; index < 32; index++)
+	for (index = 0, total = 0, count = 0; index < 32; index++)
 	{
 		total = total + a[index];
 		if (total || index == 31)
 		{
 			_putchar('0' + a[index]);
-			sum++;
+			count++;
 		}
 	}
 	return (sum);
