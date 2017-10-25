@@ -7,18 +7,17 @@
  */
 int _printf(const char *format, ...)
 {
+	int i = 0, index = 0, printed = 0;
+	va_list ap;
 	convert_t func[] = {
 		{"c", p_char},
 		{"s", p_str},
-		{"i", print_int},
-		{"d", print_dec},
+		{"i", p_int},
+		{"d", p_int},
 		{"b", conv_binary},
 		{"%", p_percent},
 		{NULL, NULL}
 	};
-	int i = 0, index = 0, printed = 0;
-	va_list ap;
-
 	if (format == NULL)
 		return (-1);
 	va_start(ap, format);

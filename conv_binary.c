@@ -5,7 +5,6 @@
 /**
  * conv_binary - convert unsigned int arg to binary
  * @b: unsigned int to be print and be converted
- * @sum: sum of unsigned printed int
  *
  * Return: the number of bytes printed
  */

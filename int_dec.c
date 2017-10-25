@@ -1,84 +1,42 @@
 #include "holberton.h"
-#include <stdarg.h>
-#include <stdlib.h>
-#include <stdio.h>
+
 /**
- * print_int - print an integer
- * @i: interger to print
- * @sum: count of the chars printed
- * Return: sum of intergers printed (chars & digits)
+ * p_num - prints numbers digit by digit
+ * @ap: arguments to be printed
+ * Return: number of characters printed
  */
-int print_int(va_list i)
+int p_num(int n)
 {
-	int a[10];
-	int max, num, total = 0, index;
+	int total = 0;
+	unsigned int len;
 
-  /* translate i to actual arg value */
-	num = va_arg(i, int);
-	max = 1000000000; /* int is in base 10 */
-	a[0] = num / max;
-
-	for (index = 1; index < 10; index++)
+	if (n == 0)
 	{
-	/* approaching like fizzbuzz */
-		max = max / 10;
-		a[index] = (num / max) % 10;
+		_putchar('0');
+		return (1);
 	}
-	/* check if negative */
-	if (num < 0)
+	if (n < 0)
 	{
 		_putchar('-');
-		total += 1;
-		for (index = 0; index < 10; index++)
-			a[index] = a[index] * -1;
+		len = -n;
+		total++;
 	}
-	for (index = 0, total = 0; index < 10; index++)
-	{
-		total = total + a[index];
-
-		if (total != 0 || index == 9)
-		{
-			_putchar('0' + a[index]);
-			total += 1;
-		}
-	}
-	return (total);
+	else
+		len = n;
+	if (len / 10)
+		len += p_num(len / 10);
+	_putchar(len % 10 + '0');
+	return (total + 1);
 }
 
 /**
- * print_dec - print decimal
- * @d: decimal to print
- * @sum: count of chars printed
- * Return: the sum of printed dec
+ * p_int - prints an integer
+ * @ap: list of arguments to be printed
+ * Return: Number of characters printed
  */
-int print_dec(va_list d)
+int p_int(va_list ap)
 {
-	int a[10];
-	int max, num, total = 0, index;
+	int nlength = va_arg(ap, int); 
 
-	num = va_arg(d, int);
-	max = 1000000000;
-	a[0] = num / max;
-	for (index = 1; index < 10; index++)
-	{
-		max = max / 10;
-		a[index] = (num / max) % 10;
-	}
-	if (num < 0)
-	{
-		_putchar('-');
-		total += 1;
-		for (index = 0; index < 10; index++)
-			a[index] = a[index] * -1;
-	}
-	for (index = 0, total = 0; index < 10; index++)
-	{
-		total = total + a[index];
-		if (total != 0 || index == 9)
-		{
-			_putchar('0' + a[index]);
-			total += 1;
-		}
-	}
-	return (total);
+	return (p_num(nlength));
 }

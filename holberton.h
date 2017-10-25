@@ -27,5 +27,7 @@ int _putchar(char c);
 int print_int(va_list i);
 int print_dec(va_list d);
 int conv_binary(va_list b);
+int p_num(int n);
+int p_int(va_list ap);
 
 #endif /* _HOLBERTON_H_ */

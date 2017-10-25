@@ -2,20 +2,19 @@
 
 /**
  * p_percent - prints a % sign
- * @sum: sum of chars printed
+ * @ap: the list of chars to be printed
  * Return: The current sum
  */
 int p_percent(va_list ap)
 {
 	(void) ap;
 	_putchar('%');
-	return(1);
+	return (1);
 }
 
 /**
  * p_char - prints a char
  * @ap: list of chars to be printed
- * @sum: the sum of chars printed
  * Return: Current sum of chars printed
  */
 int p_char(va_list ap)
@@ -29,7 +28,6 @@ int p_char(va_list ap)
 /**
  * p_str - prints a string
  * @ap: list to be printed
- * @sum: the sum of chars printed
  * Return: current sum of chars printed
  */
 int p_str(va_list ap)
