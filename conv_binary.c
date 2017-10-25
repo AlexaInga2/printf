@@ -9,13 +9,12 @@
  *
  * Return: the number of bytes printed
  */
-int *conv_binary(va_list b, int *sum)
+int *conv_binary(va_list ap, int *sum)
 {
-	unsigned int num, max, index, total;
+	unsigned int num, max, index, count;
 	unsigned int a[32];
-	int count;
 
-	num = va_arg(b, unsigned int);
+	num = va_arg(ap, unsigned int);
 	max = 2147483648; /* 2 ^ 32-1 (binary is in base 2 and int value = 32 */
 	a[0] = num / max;
 
@@ -24,10 +23,10 @@ int *conv_binary(va_list b, int *sum)
 		max = max / 2;
 		a[index] = (num / max) % 2;
 	}
-	for (index = 0, total = 0, count = 0; index < 32; index++)
+	for (index = 0, sum = 0, count = 0; index < 32; index++)
 	{
-		total = total + a[index];
-		if (total || index == 31)
+		sum += a[index];
+		if (sum || index == 31)
 		{
 			_putchar('0' + a[index]);
 			count++;
